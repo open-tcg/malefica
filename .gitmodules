@@ -1,0 +1,9 @@
+[submodule "3rd/sdl2_cxx"]
+	path = 3rd/sdl2_cxx
+	url = https://github.com/zie87/sdl2_cxx.git
+[submodule "3rd/Catch2"]
+	path = 3rd/Catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "3rd/physfs_cxx"]
+	path = 3rd/physfs_cxx
+	url = https://github.com/zie87/physfs_cxx.git
