@@ -7,3 +7,9 @@
 [submodule "3rd/physfs_cxx"]
 	path = 3rd/physfs_cxx
 	url = https://github.com/zie87/physfs_cxx.git
+[submodule "3rd/entt"]
+	path = 3rd/entt
+	url = https://github.com/skypjack/entt.git
+[submodule "3rd/tinyformat"]
+	path = 3rd/tinyformat
+	url = https://github.com/c42f/tinyformat.git
