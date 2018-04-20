@@ -13,3 +13,6 @@
 [submodule "3rd/tinyformat"]
 	path = 3rd/tinyformat
 	url = https://github.com/c42f/tinyformat.git
+[submodule "3rd/sol2"]
+	path = 3rd/sol2
+	url = https://github.com/ThePhD/sol2.git
