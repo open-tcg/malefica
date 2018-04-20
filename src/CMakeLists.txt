@@ -7,4 +7,6 @@ if (CMAKE_COMPILER_IS_GNUCXX AND CMAKE_BUILD_TYPE STREQUAL "Debug" AND USE_GCOV)
   set(LCOV_REMOVE_EXTRA '${CMAKE_SOURCE_DIR}/3rd/*' '${CMAKE_CURRENT_SOURCE_DIR}/tests/*')
 endif()
 
+
+add_subdirectory(malefica)
 add_subdirectory(tests)

@@ -23,8 +23,8 @@ add_subdirectory (3rd EXCLUDE_FROM_ALL)
 # message( "THIRD_PARTY_INCLUDE_DIRS: ${THIRD_PARTY_INCLUDE_DIRS}" )
 # message( "THIRD_PARTY_LIBRARIES:    ${THIRD_PARTY_LIBRARIES}" )
 
-include_directories(THIRD_PARTY_INCLUDE_DIRS)
-include_directories("${CMAKE_SOURCE_DIR}/include")
+include_directories ("${THIRD_PARTY_INCLUDE_DIRS}")
+include_directories ("${CMAKE_SOURCE_DIR}/include")
 
 enable_testing()
 add_subdirectory(src)
