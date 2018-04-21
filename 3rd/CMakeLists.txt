@@ -28,21 +28,22 @@ set (PHYSFS_CXX_LIBRARY "${PHYSFS_LIBRARY}")
 # sdl2_cxx
 set (SDL2_CXX_MODULE_PATH "${THIRD_PARTY_MODULE_PATH}/sdl2_cxx")
 
-include ("${SDL2_CXX_MODULE_PATH}/cmake/FindSDL2.cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${SDL2_CXX_MODULE_PATH}/cmake")
+include (FindSDL2)
 find_package (SDL2 REQUIRED)
 set (SDL2_CXX_INCLUDE_DIRS "${SDL2_CXX_INCLUDE_DIRS}" "${SDL2_INCLUDE_DIR}")
 
-# include ("${SDL2_CXX_MODULE_PATH}/cmake/FindSDL2_image.cmake")
-# find_package (SDL2_image REQUIRED)
+include ("FindSDL2_image")
+find_package (SDL2_image REQUIRED)
 
-# include ("${SDL2_CXX_MODULE_PATH}/cmake/FindSDL2_mixer.cmake")
-# find_package (SDL2_mixer REQUIRED)
+include ("FindSDL2_mixer")
+find_package (SDL2_mixer REQUIRED)
 
-# include ("${SDL2_CXX_MODULE_PATH}/cmake/FindSDL2_net.cmake")
-# find_package (SDL2_net REQUIRED)
+include ("FindSDL2_net")
+find_package (SDL2_net REQUIRED)
 
-# include ("${SDL2_CXX_MODULE_PATH}/cmake/FindSDL2_ttf.cmake")
-# find_package (SDL2_ttf REQUIRED)
+include ("FindSDL2_ttf")
+find_package (SDL2_ttf REQUIRED)
 
 set (SDL2_CXX_INCLUDE_DIRS "${SDL2_CXX_MODULE_PATH}/inc" "${SDL2_INCLUDE_DIR}" "${SDL2_IMAGE_INCLUDE_DIR}" "${SDL2_MIXER_INCLUDE_DIR}" "${SDL2_NET_INCLUDE_DIR}" "${SDL2_TTF_INCLUDE_DIR}")
 set (SDL2_CXX_LIBRARIES "${SDL2_LIBRARY}" "${SDL2_IMAGE_LIBRARY}" "${SDL2_MIXER_LIBRARY}" "${SDL2_NET_LIBRARY}" "${SDL2_TTF_LIBRARY}")
