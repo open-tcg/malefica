@@ -8,9 +8,9 @@ cd /tmp/physfs-3.0.1 && cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr/local -DPH
 cd build && make && sudo make install
 cd ${TRAVIS_BUILD_DIR}
 
-wget https://www.libsdl.org/release/SDL2-2.0.6.tar.gz -O /tmp/sdl2.tar.gz
+wget https://www.libsdl.org/release/SDL2-2.0.8.tar.gz -O /tmp/sdl2.tar.gz
 tar -xzvf /tmp/sdl2.tar.gz -C /tmp
-cd /tmp/SDL2-2.0.6 && ./configure --prefix=/usr/local && make && sudo make install
+cd /tmp/SDL2-2.0.8 && ./configure --prefix=/usr/local && make && sudo make install
 cd ${TRAVIS_BUILD_DIR}
 
 wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.3.tar.gz -O /tmp/sdl2_img.tar.gz
