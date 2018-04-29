@@ -1,0 +1,4 @@
+#!/bin/sh
+
+brew install smpeg2 libpng freetype tinyxml sdl2 sdl2_ttf sdl2_image sdl2_net physfs
+brew install sdl2_mixer --with-smpeg2

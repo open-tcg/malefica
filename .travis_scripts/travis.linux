@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+sudo apt-get install -qq lcov gcovr doxygen 
+
+wget https://icculus.org/physfs/downloads/physfs-3.0.1.tar.bz2 -O /tmp/physfs.tar.bz2
+tar -xavf /tmp/physfs.tar.bz2 -C /tmp
+cd /tmp/physfs-3.0.1 && cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr/local -DPHYSFS_BUILD_TEST=OFF
+cd build && make && sudo make install
+cd ${TRAVIS_BUILD_DIR}
+
+wget https://www.libsdl.org/release/SDL2-2.0.6.tar.gz -O /tmp/sdl2.tar.gz
+tar -xzvf /tmp/sdl2.tar.gz -C /tmp
+cd /tmp/SDL2-2.0.6 && ./configure --prefix=/usr/local && make && sudo make install
+cd ${TRAVIS_BUILD_DIR}
