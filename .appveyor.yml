@@ -3,7 +3,6 @@ version: "{branch}.{build}"
 
 os:
   - Visual Studio 2017
-  - Visual Studio 2015
 
 init:
   - git config --global core.autocrlf input
@@ -35,5 +34,5 @@ build:
   verbosity: normal                     # MSBuild verbosity level {quiet|minimal|normal|detailed}
 
 test_script:
-  - cd Build
-  - ctest -V -C %CONFIGURATION%
+  # - cd Build
+  # - ctest -V -C %CONFIGURATION%

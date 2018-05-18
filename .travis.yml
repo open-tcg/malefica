@@ -34,9 +34,9 @@ matrix:
         project:
           name: "zie87/malefica"
         notification_email: tobias.zindl@googlemail.com
-        build_command_prepend: "cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=$Debug -Wdev"
+        build_command_prepend: "cov-configure --comptype gcc --compiler gcc-7 --template
         build_command: "cmake --build ./build"
-        branch_pattern: master
+        branch_pattern: coverity_scan
     env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug'
 
   - os: linux
@@ -81,6 +81,11 @@ before_script:
     fi
 
 script:
+  - if [[ "${COVERITY_SCAN_BRANCH}" == 1 ]];
+    then
+      echo "Don't build on coverty_scan branch.";
+      exit 0;
+    fi
   - |-
     if [ -n "${BUILD_COVERAGE}" ]; then
       cmake --build ./build --target coverage
