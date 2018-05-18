@@ -34,7 +34,7 @@ matrix:
         project:
           name: "zie87/malefica"
         notification_email: tobias.zindl@googlemail.com
-        build_command_prepend: "cov-configure --comptype gcc --compiler gcc-7 --template
+        build_command_prepend: "cov-configure --comptype gcc --compiler gcc-7 --template"
         build_command: "cmake --build ./build"
         branch_pattern: coverity_scan
     env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug'
