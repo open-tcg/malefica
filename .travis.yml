@@ -56,7 +56,7 @@ before_script:
     else
       cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
     fi
-   - cd Build
+  - cd Build
 
 script:
   - |-
