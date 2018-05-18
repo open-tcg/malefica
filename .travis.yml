@@ -56,16 +56,15 @@ before_script:
     else
       cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
     fi
-  - cd Build
 
 script:
   - |-
     if [ -n "${BUILD_COVERAGE}" ]; then
-      make -j 2 coverage
-      coveralls -b . -i ../include/malefica 
+      cmake --build ./build --target coverage
+      coveralls -b ./build -i ./include/malefica 
     else
-      make -j 2
-      ctest -V -j 2
+      cmake --build ./build
+      cmake --build ./build --target test
     fi
 
 after_success:
