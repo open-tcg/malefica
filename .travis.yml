@@ -82,11 +82,10 @@ script:
   - |-
     if [ -n "${BUILD_COVERAGE}" ]; then
       cmake --build ./build --target coverage
-      coveralls -b ./build -i ./include/malefica 
     else
       cmake --build ./build
       cmake --build ./build --target test
     fi
 
 after_success:
-  - if [ -n "${BUILD_COVERAGE}" ]; then coveralls -i SDL2pp; fi
+  - if [ -n "${BUILD_COVERAGE}" ]; then coveralls -b ./build -i ./include/malefica; fi
