@@ -44,8 +44,8 @@ before_install:
   - eval "${MATRIX_EVAL}"
 
 install:
-  - if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then . .travis_scripts/travis.linux; fi
-  - if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then . .travis_scripts/travis.osx; fi
+  - if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then . .ci_scripts/travis.linux; fi
+  - if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then . .ci_scripts/travis.osx; fi
 
 before_script:
   - cd ${TRAVIS_BUILD_DIR}
