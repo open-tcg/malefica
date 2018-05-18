@@ -34,10 +34,10 @@ matrix:
         project:
           name: "zie87/malefica"
         notification_email: tobias.zindl@googlemail.com
-        build_command_prepend: "cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=$Debug -Wdev -DUSE_GCOV=ON"
-        build_command: "cmake --build ./build --target coverage"
+        build_command_prepend: "cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=$Debug -Wdev"
+        build_command: "cmake --build ./build"
         branch_pattern: master
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug' BUILD_COVERAGE=yes
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug'
 
   - os: linux
     compiler: clang
