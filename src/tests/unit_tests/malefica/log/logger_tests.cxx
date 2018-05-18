@@ -17,7 +17,7 @@ struct message_content
 TEST_CASE("test log macro", "[log]")
 {
   using namespace std::chrono_literals;
-  constexpr auto sleep_time = 10ms;
+  constexpr auto sleep_time = 20ms;
 
   SECTION("test macro without channel")
   {

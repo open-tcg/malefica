@@ -52,9 +52,9 @@ before_script:
   - |-
     if [ -n "${BUILD_COVERAGE}" ]; then
       pip install --user pyyaml cpp-coveralls
-      cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev -DUSE_GCOV=ON
+      cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev -DUSE_GCOV=ON
     else
-      cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
+      cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
     fi
 
 script:

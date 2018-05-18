@@ -70,7 +70,7 @@ TEST_CASE("test dispatcher for log messages", "[log]")
   }
 
   using namespace std::chrono_literals;
-  constexpr auto sleep_time = 3ms;
+  constexpr auto sleep_time = 20ms;
 
   SECTION("test message dispatcher creation")
   {

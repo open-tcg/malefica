@@ -35,7 +35,7 @@ TEST_CASE("test dispatcher processing", "[thread]")
       dispatcher.queue_event(i);
     }
 
-    std::this_thread::sleep_for(10ms);
+    std::this_thread::sleep_for(20ms);
     REQUIRE(dispatcher.processed_events() == event_count);
   }
 }
