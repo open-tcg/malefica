@@ -15,7 +15,7 @@ matrix:
   - os: linux
     compiler: gcc
     addons: *gcc7
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug'
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug' BUILD_COVERAGE=yes
   
   - os: linux
     compiler: clang
@@ -49,9 +49,24 @@ install:
 
 before_script:
   - cd ${TRAVIS_BUILD_DIR}
-  - cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
-  - cd Build
+  - |-
+    if [ -n "${BUILD_COVERAGE}" ]; then
+      pip install --user pyyaml cpp-coveralls
+      cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev -DUSE_GCOV=ON
+    else
+      cmake -H. -BBuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
+    fi
+   - cd Build
 
 script:
-  - make -j 2
-  - ctest -V -j 2
+  - |-
+    if [ -n "${BUILD_COVERAGE}" ]; then
+      make -j 2 coverage
+      coveralls -b . -i ../include/malefica 
+    else
+      make -j 2
+      ctest -V -j 2
+    fi
+
+after_success:
+  - if [ -n "${BUILD_COVERAGE}" ]; then coveralls -i SDL2pp; fi
