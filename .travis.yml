@@ -26,8 +26,10 @@ matrix:
   
   - os: linux
     compiler: gcc
-    addons: *gcc7
     addons:
+      apt:
+        sources: ['ubuntu-toolchain-r-test']
+        packages: ['g++-7']
       coverity_scan:
         project:
           name: "zie87/malefica"
