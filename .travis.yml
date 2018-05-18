@@ -2,6 +2,13 @@ language: cpp
 dist: trusty
 sudo: required
 
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "Sjn+vqTfDHfwk9/RHDnTFlxsldUnz8hRdWKibPKxZLpXBsy01LV18to8kEH/JlsVUw7s7EbKPXjRPVFqbt1VAwbvhaspcCNkYPm8WSJA4ILdMrWHHHLu0+kquCh1oZeUWiKcWGGiic0C3CgulqUPmuOh+/h29WOIJFkD8ay7iV/p6ewcNqEA/0DtmZhlZG9wFAgUf2fAmG4MUSf8UJk/pKuDskMl0g/ZWGzF73aY5TzXN2mDl/pBQBmYmXWTKD0Dmg2H/idr80kceX0vb4AtOnOthyj/sdw+4FPMqC6hlu51P+E85QH1xU7OKOeQit7IfQrHY3B0uugTQ/MbTZGxCXg/go4bm5nRypVVez1or6A4RSCv0eZDbcd0xr7CRzCxEp7dXvuVQ+ymuFu+9sPL6cf7lXWTe7tqL+v/m9kLDhKWOBLDOTif+QQ7HTCL2yc8ThBr4OqkQjmBbSehLC3AXmam+EfBsMuIO2Ss13+U4QnWd52Y/goNBg51zeJkOll2u6TjgqAjWWtOtOjgLXCTdIgXzYOeT4SVuEcToShtx+hxp/owf9zss7afWqU3+jjGbGmaRRVgcmeZCLCyWfc4HeHWIegf5gUtyCR5L0W2cT+WElA+xylR3r7NFuLBZzVj94lrU3R+UgQN+o5CU6AMOLKX3P8A0n8QRs0cpao9tMU="
+
+
 matrix:
   include:
   - os: linux
@@ -17,6 +24,19 @@ matrix:
     addons: *gcc7
     env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug' BUILD_COVERAGE=yes
   
+  - os: linux
+    compiler: gcc
+    addons: *gcc7
+    addons:
+      coverity_scan:
+        project:
+          name: "zie87/malefica"
+        notification_email: tobias.zindl@googlemail.com
+        build_command_prepend: "cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=$Debug -Wdev -DUSE_GCOV=ON"
+        build_command: "cmake --build ./build --target coverage"
+        branch_pattern: master
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug' BUILD_COVERAGE=yes
+
   - os: linux
     compiler: clang
     addons: &clang6
@@ -39,21 +59,6 @@ matrix:
     osx_image: xcode9.3beta
     compiler: clang
     env: MATRIX_EVAL="CC=clang && CXX=clang++" BUILD_TYPE='Release'
-
-addons:
-  coverity_scan:
-    project:
-      name: "zie87/malefica"
-    notification_email: tobias.zindl@googlemail.com
-    build_command_prepend: "cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=$Debug -Wdev -DUSE_GCOV=ON"
-    build_command: "cmake --build ./build --target coverage"
-    branch_pattern: master
-
-env:
-  global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "Sjn+vqTfDHfwk9/RHDnTFlxsldUnz8hRdWKibPKxZLpXBsy01LV18to8kEH/JlsVUw7s7EbKPXjRPVFqbt1VAwbvhaspcCNkYPm8WSJA4ILdMrWHHHLu0+kquCh1oZeUWiKcWGGiic0C3CgulqUPmuOh+/h29WOIJFkD8ay7iV/p6ewcNqEA/0DtmZhlZG9wFAgUf2fAmG4MUSf8UJk/pKuDskMl0g/ZWGzF73aY5TzXN2mDl/pBQBmYmXWTKD0Dmg2H/idr80kceX0vb4AtOnOthyj/sdw+4FPMqC6hlu51P+E85QH1xU7OKOeQit7IfQrHY3B0uugTQ/MbTZGxCXg/go4bm5nRypVVez1or6A4RSCv0eZDbcd0xr7CRzCxEp7dXvuVQ+ymuFu+9sPL6cf7lXWTe7tqL+v/m9kLDhKWOBLDOTif+QQ7HTCL2yc8ThBr4OqkQjmBbSehLC3AXmam+EfBsMuIO2Ss13+U4QnWd52Y/goNBg51zeJkOll2u6TjgqAjWWtOtOjgLXCTdIgXzYOeT4SVuEcToShtx+hxp/owf9zss7afWqU3+jjGbGmaRRVgcmeZCLCyWfc4HeHWIegf5gUtyCR5L0W2cT+WElA+xylR3r7NFuLBZzVj94lrU3R+UgQN+o5CU6AMOLKX3P8A0n8QRs0cpao9tMU="
 
 before_install:
   - eval "${MATRIX_EVAL}"
