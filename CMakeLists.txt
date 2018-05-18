@@ -20,6 +20,8 @@ option(USE_GCOV "Start coverage build" OFF)
 
 add_subdirectory (3rd EXCLUDE_FROM_ALL)
 
+find_package(Threads REQUIRED)
+
 include_directories ("${THIRD_PARTY_INCLUDE_DIRS}")
 include_directories ("${CMAKE_SOURCE_DIR}/include")
 
