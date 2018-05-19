@@ -87,11 +87,12 @@ script:
     cmake --build ./build --target test
   fi
 after_success:
-- if [ -n "${BUILD_COVERAGE}" ]; then 
+- |-
+  if [ -n "${BUILD_COVERAGE}" ]; then 
     coveralls -b ./build -i ./include/malefica;
     lcov --directory . --capture --output-file coverage.info
     lcov --remove coverage.info '/usr/*' --output-file coverage.info
     lcov --remove coverage.info "${PWD}/3rd/*" --output-file coverage.info
     lcov --remove coverage.info "${PWD}/src/tests/*" --output-file coverage.info
-    bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+    bash <(curl -s https://codecov.io/bash)
   fi
