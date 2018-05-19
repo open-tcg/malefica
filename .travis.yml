@@ -3,6 +3,7 @@ dist: trusty
 sudo: required
 env:
   global:
+    - CODECOV_TOKEN="6cb76bbf-ee0e-4874-9dc4-b2dfaaf63831"
     - secure: CynYeLth85ueLYKaS7q6zozBLYVj/R6LOKUP86MoVLtS9Agehrkyl2/TQ3aSoCqTFlmkjAqLXJtjsqKq3xqg2lrWOPvgV35L7tJOcLeFsQdJ7nBuyf4fDGMAL9eyhApi/iODtT/28/k7biCymiEKySasA8u95/GlJ85INjqM2wvGXEejYioPTfmSBvPmv+j1IjEJ/DAt+iJKok5F27YIQ1bP4k/xr0mXcH3fWZO8vI/kZJZuGXWwLh2b60LzIHxNMza3k/cKJPjUypgI6r4DrxEYBWiEUDhuC7MfpzKEhM3uh1Gn7FX2WJPypLLe+bRaS/oxbH1m1gcIc8+UDfY/BG+Eiw6yj11hYzzsWeYelSovArOz8T7SYxTynmu7zsR14yOujZ/X3zSIbM7Sd+WAdqwZsoo8keTFPn1pL8x5DOsAGPL/7a7Cljzg2nMbS0E2lCtKveTdvWe9rrmlW1Y1jWdmlHohtUnjHhOzN8K1xQ9nVHVJ6Vu36yuci0e1GSK9gu6GRPT+9Ro3RtNIfrdtkIa+rmPZ3F1bUvVB0/Evy3OQG++hwacKDu9vUE2ddMwsuTB2MMMx22ZtKlfgiJVPuCKJNZvXmN7ygk3yt5HPrORe0+2C62eRHvbGRraaiSSsFtnqJaxeQiqfBmsWB57M9Rev+tAFJfcwvInz7m4JuOg=
 matrix:
   include:
