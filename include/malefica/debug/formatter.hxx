@@ -30,7 +30,7 @@ namespace malefica
         return buf.str();
       }
 
-    } /*detail*/
+    } // namespace detail
 
     template <typename... Args>
     inline std::string format(const std::string& fmt, const Args&... args) noexcept
@@ -40,8 +40,8 @@ namespace malefica
 
     inline std::string format(const std::string& fmt) noexcept { return detail::format(fmt); }
 
-  } /*debug*/
+  } // namespace debug
 
-} /*malefica*/
+} // namespace malefica
 
 #endif /*MALEFICA_DEBUG_FORMATTER_HXX*/

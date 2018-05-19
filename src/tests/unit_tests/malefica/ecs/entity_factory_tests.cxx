@@ -38,6 +38,7 @@ TEST_CASE("test entity factory", "[ecs]")
 
     auto pos_entity_2 = factory.create<position>(position{1, 2});
     REQUIRE(factory.size<position>() == 2);
+    REQUIRE( pos_entity_2 != pos_entity );
   }
 
   SECTION("test entity creation and destroying")
