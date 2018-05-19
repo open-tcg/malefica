@@ -11,8 +11,7 @@ endif ()
 set(CATCH_MAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/catch_main.cxx")
 add_executable (${PROJECT_TEST_NAME}  "${CATCH_MAIN_FILE}"
                                       "${CMAKE_CURRENT_SOURCE_DIR}/malefica/ecs/entity_factory_tests.cxx"
-
-                                      "${CMAKE_CURRENT_SOURCE_DIR}/malefica/log/formatter_tests.cxx"
+                                      "${CMAKE_CURRENT_SOURCE_DIR}/malefica/debug/formatter_tests.cxx"
 )
 target_link_libraries (${PROJECT_TEST_NAME} ${PROJECT_TEST_LIBS})
 ParseAndAddCatchTests (${PROJECT_TEST_NAME})

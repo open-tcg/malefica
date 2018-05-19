@@ -1,11 +1,11 @@
-#ifndef MALEFICA_LOG_FORMATTER_HXX
-#define MALEFICA_LOG_FORMATTER_HXX
+#ifndef MALEFICA_DEBUG_FORMATTER_HXX
+#define MALEFICA_DEBUG_FORMATTER_HXX
 
 #include <tinyformat.h>
 
 namespace malefica
 {
-  namespace log
+  namespace debug
   {
     namespace detail
     {
@@ -40,8 +40,8 @@ namespace malefica
 
     inline std::string format(const std::string& fmt) noexcept { return detail::format(fmt); }
 
-  } /*log*/
+  } /*debug*/
 
 } /*malefica*/
 
-#endif /*MALEFICA_LOG_FORMATTER_HXX*/
+#endif /*MALEFICA_DEBUG_FORMATTER_HXX*/
