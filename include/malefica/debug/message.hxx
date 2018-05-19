@@ -15,13 +15,6 @@ namespace malefica
       engine,
       error,
       assert,
-      system,
-      audio,
-      render,
-      video,
-      input,
-      network,
-      ai,
       profile,
       test
     };
@@ -49,27 +42,6 @@ namespace malefica
           break;
         case category::assert:
           category_string = "assert";
-          break;
-        case category::system:
-          category_string = "system";
-          break;
-        case category::audio:
-          category_string = "audio";
-          break;
-        case category::render:
-          category_string = "render";
-          break;
-        case category::video:
-          category_string = "video";
-          break;
-        case category::input:
-          category_string = "input";
-          break;
-        case category::network:
-          category_string = "network";
-          break;
-        case category::ai:
-          category_string = "ai";
           break;
         case category::profile:
           category_string = "profile";
