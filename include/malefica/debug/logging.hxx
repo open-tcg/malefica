@@ -100,7 +100,7 @@ namespace malefica
 
       private:
         std::string m_message;
-        category m_category = category::application;
+        category m_category = category::engine;
         level m_level = level::info;
       };
 
@@ -136,8 +136,7 @@ namespace malefica
 #define M_PRINTF(...) ::malefica::log::static_logger::log(::malefica::log::detail::create_message(__FILE__, __FUNCTION__, __LINE__, __VA_ARGS__));
 #endif // M_PRINTF
 
-
-    // M_LOG() << malefica::log::category::test << malefica::log::level::fatal << "test message";
-    // M_PRINTF(malefica::log::level::info, "this %s a multi parameter %s with %i parameters", "is", "string", 3);
+// M_LOG() << malefica::log::category::test << malefica::log::level::fatal << "test message";
+// M_PRINTF(malefica::log::level::info, "this %s a multi parameter %s with %i parameters", "is", "string", 3);
 
 #endif /* MALEFICA_DEBUG_LOGGING_HXX */
