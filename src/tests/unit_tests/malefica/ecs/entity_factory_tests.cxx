@@ -29,6 +29,7 @@ TEST_CASE("test entity factory", "[ecs]")
     auto empty_entity = factory.create();
     REQUIRE_FALSE(factory.empty());
     REQUIRE(factory.size() == 1);
+    REQUIRE(empty_entity == 0);
 
     auto pos_entity = factory.create<position, velocity>();
     REQUIRE(factory.size() == 2);
@@ -38,7 +39,7 @@ TEST_CASE("test entity factory", "[ecs]")
 
     auto pos_entity_2 = factory.create<position>(position{1, 2});
     REQUIRE(factory.size<position>() == 2);
-    REQUIRE( pos_entity_2 != pos_entity );
+    REQUIRE(pos_entity_2 != pos_entity);
   }
 
   SECTION("test entity creation and destroying")
