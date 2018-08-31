@@ -1,25 +1,19 @@
 language: cpp
 dist: trusty
 sudo: required
-env:
-  global:
-    - CODECOV_TOKEN="6cb76bbf-ee0e-4874-9dc4-b2dfaaf63831"
-    - secure: CynYeLth85ueLYKaS7q6zozBLYVj/R6LOKUP86MoVLtS9Agehrkyl2/TQ3aSoCqTFlmkjAqLXJtjsqKq3xqg2lrWOPvgV35L7tJOcLeFsQdJ7nBuyf4fDGMAL9eyhApi/iODtT/28/k7biCymiEKySasA8u95/GlJ85INjqM2wvGXEejYioPTfmSBvPmv+j1IjEJ/DAt+iJKok5F27YIQ1bP4k/xr0mXcH3fWZO8vI/kZJZuGXWwLh2b60LzIHxNMza3k/cKJPjUypgI6r4DrxEYBWiEUDhuC7MfpzKEhM3uh1Gn7FX2WJPypLLe+bRaS/oxbH1m1gcIc8+UDfY/BG+Eiw6yj11hYzzsWeYelSovArOz8T7SYxTynmu7zsR14yOujZ/X3zSIbM7Sd+WAdqwZsoo8keTFPn1pL8x5DOsAGPL/7a7Cljzg2nMbS0E2lCtKveTdvWe9rrmlW1Y1jWdmlHohtUnjHhOzN8K1xQ9nVHVJ6Vu36yuci0e1GSK9gu6GRPT+9Ro3RtNIfrdtkIa+rmPZ3F1bUvVB0/Evy3OQG++hwacKDu9vUE2ddMwsuTB2MMMx22ZtKlfgiJVPuCKJNZvXmN7ygk3yt5HPrORe0+2C62eRHvbGRraaiSSsFtnqJaxeQiqfBmsWB57M9Rev+tAFJfcwvInz7m4JuOg=
 matrix:
   include:
   - os: linux
     compiler: gcc
-    addons: &1
+    addons:
       apt:
         sources:
         - ubuntu-toolchain-r-test
         packages:
-        - g++-7
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Release'
-  - os: linux
-    compiler: gcc
-    addons: *1
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug' BUILD_COVERAGE=yes
+        - g++-6
+        - cmake
+        - libsdl2-dev
+    env: MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
   - os: linux
     compiler: gcc
     addons:
@@ -28,70 +22,115 @@ matrix:
         - ubuntu-toolchain-r-test
         packages:
         - g++-7
-      coverity_scan:
-        project:
-          name: zie87/malefica
-        notification_email: tobias.zindl@googlemail.com
-        build_command_prepend: cov-configure --comptype gcc --compiler gcc-7 --template
-        build_command: cmake --build ./build
-        branch_pattern: coverity_scan
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TYPE='Debug'
+        - cmake
+        - libsdl2-dev
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && GCOV=gcov-7" BUILD_TARGET=Coverage
   - os: linux
     compiler: clang
-    addons: &2
+    addons:
       apt:
         sources:
-        - llvm-toolchain-trusty-6.0
         - ubuntu-toolchain-r-test
+        - llvm-toolchain-trusty-4.0
         packages:
-        - clang-6.0
-        - libstdc++-6-dev
-        - g++-7
-    env: MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0" BUILD_TYPE='Release'
+        - clang-4.0
+        - libstdc++-4.9-dev
+        - cmake
+        - libsdl2-dev
+    env: MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
   - os: linux
     compiler: clang
-    addons: *2
-    env: MATRIX_EVAL="CC=clang-6.0 && CXX=clang++-6.0" BUILD_TYPE='Debug'
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        - llvm-toolchain-trusty-5.0
+        packages:
+        - clang-5.0
+        - libstdc++-4.9-dev
+        - cmake
+        - libsdl2-dev
+    env: MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+  - os: linux
+    compiler: gcc
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - g++-7
+        - libsdl2-dev
+      coverity_scan:
+        project:
+          name: zie87/wagic_duels
+        notification_email: zie.develop@gmail.com
+        build_command_prepend: cov-configure --comptype gcc --compiler gcc-7 --template
+        build_command: cmake --build ./build --target all
+        branch_pattern: coverity_scan
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" BUILD_TARGET=Coverity
   - os: osx
-    osx_image: xcode9.3beta
-    compiler: clang
-    env: MATRIX_EVAL="CC=clang && CXX=clang++" BUILD_TYPE='Debug'
+    osx_image: xcode8.3
   - os: osx
-    osx_image: xcode9.3beta
-    compiler: clang
-    env: MATRIX_EVAL="CC=clang && CXX=clang++" BUILD_TYPE='Release'
+    osx_image: xcode9.4
+
+env:
+  global:
+    - secure: "BAfM/rLUzu7PG2edq/Sq1sa+oe0ZT6xfNIxXyUoc3Avs1S9KRaVYSlUje09pk3z0kkWIKevBwFBw4/sx8tZY5ygkGCpGIENw0hY185dwBhnzNyqgWPAaQ7HxjfHnnuW5nHYUlp17NYDhstXmK475D0qeiOY+jiF3Eb/VhkdEfTGEMy4ADRqYgGD/LXLuH0Xk5XkDMgQWNFE59qSMdnBKnVWBxH7ma7uJZC965CfJb9VKwfNa27lk2/xs8S0/g82i0N2Kz1ReI6lyvUF7j/V59WNi+CCdgB8ThCcw81Bb7iCPFdA0ztOFWPmUa0kR9zXa0ok1qt4ayZeMHecSI09aG129hlT0lJLzeHVcJg1CYmF53Sd5CPE27Wbhf5GUd9rBvdbbh8XT74U7PQXXvo+qBFDASH8xX9wv//mBPhr8jVhOtaO64i/QRDNtABRpLFhj0vCgT1ZpFCGBsO76BgX3Mm6095xXWzugIRUDc13DNvstzNT7xBWvggcw4p2y6fjn9vzrg5t1CgvM5j3OKei6a9zLT2buijEF5PJISmT5Cg9wRb+kE25Eg5RKEHNVFxQ9j1EV6DtmPsnf3FiPmvIn2IrQ7Enz8te3K2VAu0L26P/Z+CUP/OXi7R9QoaO7s5zWTI9l/lZscNtv/fjF0D4nGaayzTAStocXgRwQhKcJucM="
+
 before_install:
 - eval "${MATRIX_EVAL}"
-- if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca- fi
-install:
-- if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then . .ci_scripts/travis.linux; fi
-- if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then . .ci_scripts/travis.osx; fi
-before_script:
-- cd ${TRAVIS_BUILD_DIR}
 - |-
-  if [ -n "${BUILD_COVERAGE}" ]; then
-    pip install --user pyyaml cpp-coveralls
-    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev -DUSE_GCOV=ON
-  else
-    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -Wdev
+  if [[ ${BUILD_TARGET} == 'Coverity' ]]; then
+    echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN
+    CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+  fi
+install:
+- |-
+  if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then
+    sudo apt-get -qq update
+    sudo apt-get install -qq libopenal-dev pulseaudio libpulse-dev
+    
+    if [[ ${BUILD_TARGET} == 'Coverage' ]]; then
+      sudo apt-get install -qq lcov gcovr gdb apport
+      pip install --user pyyaml cpp-coveralls
+    fi
+    
+    wget https://icculus.org/physfs/downloads/physfs-3.0.1.tar.bz2 -O /tmp/physfs.tar.bz2
+    tar -xavf /tmp/physfs.tar.bz2 -C /tmp
+    cd /tmp/physfs-3.0.1 && cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr/local -DPHYSFS_BUILD_TEST=OFF
+    cd build && make && sudo make install
+    
+    cd ${TRAVIS_BUILD_DIR}
+  fi
+- |-
+  if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then
+    brew install  openal-soft physfs sdl2
+  fi
+before_script:
+- |-
+  if [[ ${BUILD_TARGET} == 'Coverage' ]]; then
+    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug -DUSE_GCOV=ON
+  fi
+- |-
+  if [[ ${BUILD_TARGET} == 'Coverity' ]]; then
+    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug
   fi
 script:
 - if [[ "${COVERITY_SCAN_BRANCH}" == 1 ]]; then echo "Don't build on coverty_scan
   branch."; exit 0; fi
 - |-
-  if [ -n "${BUILD_COVERAGE}" ]; then
-    cmake --build ./build --target coverage
+  if [[ ${BUILD_TARGET} == 'Coverage' ]]; then
+    cmake --build ./build --target unittest_coverage -- -j3
   else
-    cmake --build ./build
-    cmake --build ./build --target test
+    cmake --build ./build --target all -- -j3
   fi
 after_success:
 - |-
-  if [ -n "${BUILD_COVERAGE}" ]; then 
-    coveralls -b ./build -i ./include/malefica;
-    lcov --directory . --capture --output-file coverage.info
-    lcov --remove coverage.info '/usr/*' --output-file coverage.info
-    lcov --remove coverage.info "${PWD}/3rd/*" --output-file coverage.info
-    lcov --remove coverage.info "${PWD}/src/tests/*" --output-file coverage.info
+  if [[ ${BUILD_TARGET} == 'Coverage' ]]; then
+    coveralls -b ./build -e /usr -e ${PWD}/3rd -e ${PWD}/src/tests -i include -i src --gcov ${GCOV} --gcov-options '\-lp' > /dev/null
+    lcov --gcov-tool ${GCOV} --directory . --capture --output-file coverage.info
+    lcov --gcov-tool ${GCOV} --remove coverage.info '/usr/*' --output-file coverage.info
+    lcov --gcov-tool ${GCOV} --remove coverage.info "${PWD}/3rd/*" --output-file coverage.info
+    lcov --gcov-tool ${GCOV} --remove coverage.info "${PWD}/src/tests/*" --output-file coverage.info
     bash <(curl -s https://codecov.io/bash)
   fi
