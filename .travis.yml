@@ -62,8 +62,7 @@ matrix:
     env: MATRIX_EVAL="CC=clang && CXX=clang++" BUILD_TYPE='Release'
 before_install:
 - eval "${MATRIX_EVAL}"
-- echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN
-  CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+- if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca- fi
 install:
 - if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then . .ci_scripts/travis.linux; fi
 - if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then . .ci_scripts/travis.osx; fi

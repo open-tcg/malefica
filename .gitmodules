@@ -1,24 +1,9 @@
-[submodule "3rd/sdl2_cxx"]
-	path = 3rd/sdl2_cxx
-	url = https://github.com/zie87/sdl2_cxx.git
-[submodule "3rd/Catch2"]
-	path = 3rd/Catch2
-	url = https://github.com/catchorg/Catch2.git
 [submodule "3rd/physfs_cxx"]
 	path = 3rd/physfs_cxx
 	url = https://github.com/zie87/physfs_cxx.git
-[submodule "3rd/entt"]
-	path = 3rd/entt
-	url = https://github.com/skypjack/entt.git
 [submodule "3rd/tinyformat"]
 	path = 3rd/tinyformat
 	url = https://github.com/c42f/tinyformat.git
-[submodule "3rd/sol2"]
-	path = 3rd/sol2
-	url = https://github.com/ThePhD/sol2.git
-[submodule "3rd/json"]
-	path = 3rd/json
-	url = https://github.com/nlohmann/json.git
 [submodule "3rd/spdlog"]
 	path = 3rd/spdlog
 	url = https://github.com/gabime/spdlog.git
