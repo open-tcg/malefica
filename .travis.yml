@@ -62,7 +62,7 @@ matrix:
         - libsdl2-dev
       coverity_scan:
         project:
-          name: zie87/wagic_duels
+          name: zie87/malefica
         notification_email: zie.develop@gmail.com
         build_command_prepend: cov-configure --comptype gcc --compiler gcc-7 --template
         build_command: cmake --build ./build --target all
