@@ -1,6 +1,7 @@
 language: cpp
 dist: trusty
 sudo: required
+
 matrix:
   include:
   - os: linux
@@ -72,10 +73,9 @@ matrix:
     osx_image: xcode8.3
   - os: osx
     osx_image: xcode9.4
-
 env:
   global:
-    - secure: "BAfM/rLUzu7PG2edq/Sq1sa+oe0ZT6xfNIxXyUoc3Avs1S9KRaVYSlUje09pk3z0kkWIKevBwFBw4/sx8tZY5ygkGCpGIENw0hY185dwBhnzNyqgWPAaQ7HxjfHnnuW5nHYUlp17NYDhstXmK475D0qeiOY+jiF3Eb/VhkdEfTGEMy4ADRqYgGD/LXLuH0Xk5XkDMgQWNFE59qSMdnBKnVWBxH7ma7uJZC965CfJb9VKwfNa27lk2/xs8S0/g82i0N2Kz1ReI6lyvUF7j/V59WNi+CCdgB8ThCcw81Bb7iCPFdA0ztOFWPmUa0kR9zXa0ok1qt4ayZeMHecSI09aG129hlT0lJLzeHVcJg1CYmF53Sd5CPE27Wbhf5GUd9rBvdbbh8XT74U7PQXXvo+qBFDASH8xX9wv//mBPhr8jVhOtaO64i/QRDNtABRpLFhj0vCgT1ZpFCGBsO76BgX3Mm6095xXWzugIRUDc13DNvstzNT7xBWvggcw4p2y6fjn9vzrg5t1CgvM5j3OKei6a9zLT2buijEF5PJISmT5Cg9wRb+kE25Eg5RKEHNVFxQ9j1EV6DtmPsnf3FiPmvIn2IrQ7Enz8te3K2VAu0L26P/Z+CUP/OXi7R9QoaO7s5zWTI9l/lZscNtv/fjF0D4nGaayzTAStocXgRwQhKcJucM="
+   - secure: C6IMB6lez77KiKiBDrJg40lt45jr9k8vKt4IxfTML5zlYB7nWye2IBzbmod25N9ge5HInh/1bS/WFdSbFAtIepsQ/TgZh0SVAdSHrYU/9LX9RS4LU8j8XWRXLb4cpamrvOMEjp9/0iSVb0IEVY0/YmnF5t5Bu9c1AJ4eM+hBCPErqkGjkcodp40gONO91Eww/k47Y70YmZNEayB3af2pEYLagTAzcgKE2ZroHz5MUEYhgDaZspTYfnpeipfge83OfX3QS9X2+b+uxp4MIdcCfTJtaWOQj9VamQB9jAdOvI/lGpbnGumLBJOWcz67O3OOd/df9xcT8kTyr397TPAXcUj6vA8s122MZkOTkuZL5SBBuoIF4EM/srh4MKAADIiWZzybouXt7H+frkEn0TqEejUCjAO0gdr6CvcZylUhJWHoxQrjof4sJT9ccPeHSg++Bta/INn8HJqh6CCKBvXAU6Mg5f6NJjAD9tD5tC618KwSHqIwpeCOuby/skr9Fk/+DaeHmXWbYv9Sv0Ds24rDvRpcF2kke6UefANR4sUhKFAesM1uMUPSts3AqkILdbZCY3M6r9fgnZ+utDL4vZA0YwNjAa5Nv21ANHQHk6X7E2g10DP4ZosolsZuQibElCWPbKaUD6CG2Q4dpHPXfntVe+RVEqW75K8npGB/X+ENHPE=
 
 before_install:
 - eval "${MATRIX_EVAL}"
@@ -84,6 +84,7 @@ before_install:
     echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN
     CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
   fi
+  
 install:
 - |-
   if [[ ${TRAVIS_OS_NAME} == 'linux' ]]; then
@@ -94,7 +95,7 @@ install:
       sudo apt-get install -qq lcov gcovr gdb apport
       pip install --user pyyaml cpp-coveralls
     fi
-    
+  
     wget https://icculus.org/physfs/downloads/physfs-3.0.1.tar.bz2 -O /tmp/physfs.tar.bz2
     tar -xavf /tmp/physfs.tar.bz2 -C /tmp
     cd /tmp/physfs-3.0.1 && cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr/local -DPHYSFS_BUILD_TEST=OFF
@@ -106,7 +107,6 @@ install:
   if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then
     brew install  openal-soft physfs sdl2
   fi
-  
 before_script:
 - |-
   if [[ ${BUILD_TARGET} == 'Coverage' ]]; then
@@ -114,7 +114,6 @@ before_script:
   else
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug
   fi
-
 script:
 - if [[ "${COVERITY_SCAN_BRANCH}" == 1 ]]; then echo "Don't build on coverty_scan
   branch."; exit 0; fi
