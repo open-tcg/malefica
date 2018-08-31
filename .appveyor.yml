@@ -4,7 +4,7 @@ version: "{branch}.{build}"
 os:
   - Visual Studio 2017
 
-init:
+image:
   - git config --global core.autocrlf input
   # Set build version to git commit-hash
   - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
@@ -21,6 +21,9 @@ platform:
 configuration:
   - Debug
   - Release
+
+environment:
+  PREFIX: c:\usr_msvc
 
 #Cmake will autodetect the compiler, but we set the arch
 before_build:
