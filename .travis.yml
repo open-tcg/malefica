@@ -106,15 +106,15 @@ install:
   if [[ ${TRAVIS_OS_NAME} == 'osx' ]]; then
     brew install  openal-soft physfs sdl2
   fi
+  
 before_script:
 - |-
   if [[ ${BUILD_TARGET} == 'Coverage' ]]; then
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug -DUSE_GCOV=ON
-  fi
-- |-
-  if [[ ${BUILD_TARGET} == 'Coverity' ]]; then
+  else
     cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug
   fi
+
 script:
 - if [[ "${COVERITY_SCAN_BRANCH}" == 1 ]]; then echo "Don't build on coverty_scan
   branch."; exit 0; fi
