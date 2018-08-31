@@ -1,10 +1,10 @@
 # version string format -- This will be overwritten later anyway
 version: "{branch}.{build}"
 
-os:
+image:
   - Visual Studio 2017
 
-image:
+init:
   - git config --global core.autocrlf input
   # Set build version to git commit-hash
   - ps: Update-AppveyorBuild -Version "$($env:APPVEYOR_REPO_BRANCH) - $($env:APPVEYOR_REPO_COMMIT)"
