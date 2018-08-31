@@ -23,7 +23,7 @@ parsers:
 
 ignore:
   - "3rd/**/*"
-  - "src/wge_tests/**/*"
+  - "src/tests/**/*"
 
 comment:
   layout: "header, diff"
