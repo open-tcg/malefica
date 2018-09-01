@@ -152,7 +152,7 @@ namespace malefica
     }
 
     template <typename T>
-    vector_3d_base<T>& clamp(vector_3d_base<T> vec, const vector_3d_base<T>& min, const vector_3d_base<T>& max)
+    vector_3d_base<T>& clamp(vector_3d_base<T>& vec, const vector_3d_base<T>& min, const vector_3d_base<T>& max)
     {
       return vec.clamp(min, max);
     }

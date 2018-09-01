@@ -146,7 +146,7 @@ namespace malefica
     }
 
     template <typename T>
-    vector_2d_base<T>& clamp(vector_2d_base<T> vec, const vector_2d_base<T>& min, const vector_2d_base<T>& max)
+    vector_2d_base<T>& clamp(vector_2d_base<T>& vec, const vector_2d_base<T>& min, const vector_2d_base<T>& max)
     {
       return vec.clamp(min, max);
     }
