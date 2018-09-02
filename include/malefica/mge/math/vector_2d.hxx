@@ -1,14 +1,14 @@
-#ifndef MALEFICA_MATH_VECTOR_2D_HXX
-#define MALEFICA_MATH_VECTOR_2D_HXX
+#ifndef MALEFICA_MGE_MATH_VECTOR_2D_HXX
+#define MALEFICA_MGE_MATH_VECTOR_2D_HXX
 
 #include <cmath>
 
 #include <algorithm>
 #include <type_traits>
 
-#include <malefica/algorithm.hxx>
+#include <malefica/mge/algorithm.hxx>
 
-namespace malefica
+namespace mge
 {
   namespace math
   {
@@ -122,8 +122,8 @@ namespace malefica
 
       inline vector_2d_base& clamp(const vector_2d_base& min, const vector_2d_base& max)
       {
-        m_x = malefica::clamp(m_x, min.m_x, max.m_x);
-        m_y = malefica::clamp(m_y, min.m_y, max.m_y);
+        m_x = mge::clamp(m_x, min.m_x, max.m_x);
+        m_y = mge::clamp(m_y, min.m_y, max.m_y);
         return *this;
       }
 
@@ -155,6 +155,6 @@ namespace malefica
 
   } // namespace math
 
-} // namespace malefica
+} // namespace mge
 
-#endif // MALEFICA_MATH_VECTOR_2D_HXX
+#endif // MALEFICA_MGE_MATH_VECTOR_2D_HXX

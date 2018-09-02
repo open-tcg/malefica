@@ -1,20 +1,20 @@
-#ifndef MALEFICA_ALGORITHM_HXX
-#define MALEFICA_ALGORITHM_HXX
+#ifndef MALEFICA_MGE_ALGORITHM_HXX
+#define MALEFICA_MGE_ALGORITHM_HXX
 
 #if __cplusplus > 201402L
 
 #include <algorithm>
 
-namespace malefica
+namespace mge
 {
   using std::clamp;
-} // namespace malefica
+} // namespace mge
 
 #else
 
 #include <cassert>
 
-namespace malefica
+namespace mge
 {
 
   template <typename T>
@@ -30,8 +30,8 @@ namespace malefica
     assert(!compare(high, low));
     return compare(value, low) ? low : compare(high, value) ? high : value;
   }
-} // namespace malefica
+} // namespace mge
 
 #endif
 
-#endif // MALEFICA_ALGORITHM_HXX
+#endif // MALEFICA_MGE_ALGORITHM_HXX

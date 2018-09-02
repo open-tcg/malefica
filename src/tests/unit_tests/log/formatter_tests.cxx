@@ -1,15 +1,15 @@
-#include <malefica/log/formatter.hxx>
+#include <malefica/mge/log/formatter.hxx>
 
 #include <catch.hpp>
 
 #include <string>
 
-TEST_CASE("test printf like string formation", "[log][core]")
+TEST_CASE("test printf like string formation", "[log][mge]")
 {
   SECTION("test formatting of a string without placeholders")
   {
     const std::string input("test string");
-    REQUIRE_THAT(malefica::log::format(input), Catch::Matchers::Equals(input));
+    REQUIRE_THAT(mge::log::format(input), Catch::Matchers::Equals(input));
   }
 
   SECTION("test formatting of a string with integer placeholder")
@@ -18,7 +18,7 @@ TEST_CASE("test printf like string formation", "[log][core]")
     const std::string placeholder("%i");
     const int val = 42;
 
-    REQUIRE_THAT(malefica::log::format(input + placeholder, val), Catch::Matchers::Equals(input + std::to_string(val)));
+    REQUIRE_THAT(mge::log::format(input + placeholder, val), Catch::Matchers::Equals(input + std::to_string(val)));
   }
 
   SECTION("test formatting of a string with string placeholder")
@@ -27,7 +27,7 @@ TEST_CASE("test printf like string formation", "[log][core]")
     const std::string placeholder("%s");
     const std::string val("value");
 
-    REQUIRE_THAT(malefica::log::format(input + placeholder, val.c_str()), Catch::Matchers::Equals(input + val));
+    REQUIRE_THAT(mge::log::format(input + placeholder, val.c_str()), Catch::Matchers::Equals(input + val));
   }
 
   SECTION("test formatting of a string placeholder with placeholder like value")
@@ -36,7 +36,7 @@ TEST_CASE("test printf like string formation", "[log][core]")
     const std::string placeholder("%s");
     const std::string val("%s");
 
-    REQUIRE_THAT(malefica::log::format(input + placeholder, val.c_str()), Catch::Matchers::Equals(input + val));
+    REQUIRE_THAT(mge::log::format(input + placeholder, val.c_str()), Catch::Matchers::Equals(input + val));
   }
 
   SECTION("test formatting of a string multiple placeholders")
@@ -51,6 +51,6 @@ TEST_CASE("test printf like string formation", "[log][core]")
     const std::string placeholder_input(input + placeholder_1 + middle_part + placeholder_2);
     const std::string expected_result(input + val_1 + middle_part + std::to_string(val_2));
 
-    REQUIRE_THAT(malefica::log::format(placeholder_input, val_1.c_str(), val_2), Catch::Matchers::Equals(expected_result));
+    REQUIRE_THAT(mge::log::format(placeholder_input, val_1.c_str(), val_2), Catch::Matchers::Equals(expected_result));
   }
 }

@@ -1,5 +1,5 @@
-#ifndef MALEFICA_MATH_VECTOR_3D_HXX
-#define MALEFICA_MATH_VECTOR_3D_HXX
+#ifndef MALEFICA_MGE_MATH_VECTOR_3D_HXX
+#define MALEFICA_MGE_MATH_VECTOR_3D_HXX
 
 #include <cmath>
 
@@ -7,9 +7,9 @@
 #include <array>
 #include <type_traits>
 
-#include <malefica/algorithm.hxx>
+#include <malefica/mge/algorithm.hxx>
 
-namespace malefica
+namespace mge
 {
   namespace math
   {
@@ -126,9 +126,9 @@ namespace malefica
 
       inline vector_3d_base& clamp(const vector_3d_base& min, const vector_3d_base& max)
       {
-        m_array[0] = malefica::clamp(m_array[0], min.m_array[0], max.m_array[0]);
-        m_array[1] = malefica::clamp(m_array[1], min.m_array[1], max.m_array[1]);
-        m_array[2] = malefica::clamp(m_array[2], min.m_array[2], max.m_array[2]);
+        m_array[0] = mge::clamp(m_array[0], min.m_array[0], max.m_array[0]);
+        m_array[1] = mge::clamp(m_array[1], min.m_array[1], max.m_array[1]);
+        m_array[2] = mge::clamp(m_array[2], min.m_array[2], max.m_array[2]);
         return *this;
       }
 
@@ -161,6 +161,6 @@ namespace malefica
 
   } // namespace math
 
-} // namespace malefica
+} // namespace mge
 
-#endif // MALEFICA_MATH_VECTOR_3D_HXX
+#endif // MALEFICA_MGE_MATH_VECTOR_3D_HXX

@@ -1,13 +1,13 @@
-#ifndef MALEFICA_DEBUG_MESSAGE_HXX
-#define MALEFICA_DEBUG_MESSAGE_HXX
+#ifndef MALEFICA_MGE_DEBUG_MESSAGE_HXX
+#define MALEFICA_MGE_DEBUG_MESSAGE_HXX
 
 #include "formatter.hxx"
 
-#include <malefica/types.hxx>
+#include <malefica/mge/types.hxx>
 
 #include <string>
 
-namespace malefica
+namespace mge
 {
   namespace log
   {
@@ -147,25 +147,25 @@ namespace malefica
       template <typename... Args>
       static inline message create_message(const char* file, const char* func, int line, const std::string& fmt, const Args&... args)
       {
-        return message{malefica::log::level::info, malefica::log::detail::create_function_prefix(file, func, line) + malefica::log::format(fmt, args...)};
+        return message{mge::log::level::info, mge::log::detail::create_function_prefix(file, func, line) + mge::log::format(fmt, args...)};
       }
 
       template <typename... Args>
       static inline message create_message(const char* file, const char* func, int line, level level, const std::string& fmt, const Args&... args)
       {
-        return message{level, malefica::log::detail::create_function_prefix(file, func, line) + malefica::log::format(fmt, args...)};
+        return message{level, mge::log::detail::create_function_prefix(file, func, line) + mge::log::format(fmt, args...)};
       }
 
       template <typename... Args>
       static inline message
       create_message(const char* file, const char* func, int line, category channel, level level, const std::string& fmt, const Args&... args)
       {
-        return message{level, channel, malefica::log::detail::create_function_prefix(file, func, line) + malefica::log::format(fmt, args...)};
+        return message{level, channel, mge::log::detail::create_function_prefix(file, func, line) + mge::log::format(fmt, args...)};
       }
     } // namespace detail
 
   } // namespace log
 
-} // namespace malefica
+} // namespace mge
 
-#endif // MALEFICA_DEBUG_MESSAGE_HXX
+#endif // MALEFICA_MGE_DEBUG_MESSAGE_HXX

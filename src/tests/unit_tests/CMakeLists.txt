@@ -1,5 +1,5 @@
 set(PROJECT_TEST_NAME ${PROJECT_NAME}_test)
-# set(PROJECT_TEST_LIBS ${PROJECT_LIB_NAME} ${MALEFICA_LIBRARIES})
+set(PROJECT_TEST_LIBS ${PROJECT_LIB_NAME} ${MALEFICA_LIBRARIES})
 
 include(ParseAndAddCatchTests)
 
@@ -15,11 +15,15 @@ set(MALEFICA_TEST_MATH_SRC  "${CMAKE_CURRENT_SOURCE_DIR}/math/vector_2d_tests.cx
                             "${CMAKE_CURRENT_SOURCE_DIR}/math/vector_3d_tests.cxx"
 )
 
+set(MALEFICA_TEST_MTG_SRC   "${CMAKE_CURRENT_SOURCE_DIR}/mtg/mana_types_tests.cxx"
+)
+
 add_executable (${PROJECT_TEST_NAME}  ${CATCH_MAIN_FILE}
                                       ${MALEFICA_TEST_LOG_SRC}
                                       ${MALEFICA_TEST_MATH_SRC}
+                                      ${MALEFICA_TEST_MTG_SRC}
 )
 
-# target_link_libraries (${PROJECT_TEST_NAME} ${PROJECT_TEST_LIBS})
+target_link_libraries (${PROJECT_TEST_NAME} ${PROJECT_TEST_LIBS})
 
 ParseAndAddCatchTests (${PROJECT_TEST_NAME})

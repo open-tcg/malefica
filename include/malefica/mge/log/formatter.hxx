@@ -1,11 +1,11 @@
-#ifndef MALEFICA_LOG_FORMATTER_HXX
-#define MALEFICA_LOG_FORMATTER_HXX
+#ifndef MALEFICA_MGE_LOG_FORMATTER_HXX
+#define MALEFICA_MGE_LOG_FORMATTER_HXX
 
 #include <tinyformat.h>
 
 #include <string>
 
-namespace malefica
+namespace mge
 {
   namespace log
   {
@@ -44,6 +44,6 @@ namespace malefica
 
   } // namespace log
 
-} // namespace malefica
+} // namespace mge
 
-#endif // MALEFICA_LOG_FORMATTER_HXX
+#endif // MALEFICA_MGE_LOG_FORMATTER_HXX

@@ -1,9 +1,9 @@
-#ifndef MALEFICA_TYPES_HXX
-#define MALEFICA_TYPES_HXX
+#ifndef MALEFICA_MGE_TYPES_HXX
+#define MALEFICA_MGE_TYPES_HXX
 
 #include <cstdint>
 
-namespace malefica
+namespace mge
 {
   using int8_t = std::int8_t;
   using uint8_t = std::uint8_t;
@@ -21,6 +21,6 @@ namespace malefica
 
   using byte_t = std::uint8_t;
   using pixel_t = std::uint32_t;
-} // namespace malefica
+} // namespace mge
 
-#endif // MALEFICA_TYPES_HXX
+#endif // MALEFICA_MGE_TYPES_HXX

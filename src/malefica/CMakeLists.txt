@@ -1,5 +1,5 @@
 
-# set(MALEFICA_SOURCES    "${CMAKE_CURRENT_SOURCE_DIR}/log/logger.cxx"
-# )
+set(MALEFICA_SOURCES    "${CMAKE_CURRENT_SOURCE_DIR}/mtg/mana_types.cxx"
+)
 
-# add_library(${PROJECT_LIB_NAME} STATIC ${MALEFICA_SOURCES})
+add_library(${PROJECT_LIB_NAME} STATIC ${MALEFICA_SOURCES})
