@@ -35,4 +35,8 @@ namespace mtg
   const mana mana_types::phyrexian_red(1 << mana::red_pos | 1 << mana::or_2_life_pos, "P/R");
   const mana mana_types::phyrexian_green(1 << mana::green_pos | 1 << mana::or_2_life_pos, "P/G");
 
+  const mana mana_types::generic(1 << mana::generic_pos, "");
+  const mana mana_types::snow(1 << mana::generic_pos | 1 << mana::is_snow_pos, "S");
+  const mana mana_types::variable(1 << mana::generic_pos | 1 << mana::is_x_pos, "X");
+
 } // namespace mtg

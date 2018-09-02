@@ -81,4 +81,33 @@ TEST_CASE("testing mana primitives", "[mana][mtg]")
       REQUIRE_FALSE(mana.is_hybrid());
     }
   }
+
+  SECTION("test generic mana_types")
+  {
+    {
+      auto mana = mtg::mana_types::generic;
+      REQUIRE(mana.is_colorless());
+      REQUIRE(mana.has_generic());
+    }
+  }
+
+  SECTION("test snow mana_types")
+  {
+    {
+      auto mana = mtg::mana_types::snow;
+      REQUIRE(mana.is_snow());
+      REQUIRE(mana.is_colorless());
+      REQUIRE(mana.has_generic());
+    }
+  }
+
+  SECTION("test variable mana_types")
+  {
+    {
+      auto mana = mtg::mana_types::variable;
+      REQUIRE(mana.is_x());
+      REQUIRE(mana.is_colorless());
+      REQUIRE(mana.has_generic());
+    }
+  }
 }
