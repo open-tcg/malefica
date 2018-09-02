@@ -56,6 +56,8 @@ namespace mtg
     inline constexpr bool is_monocolored_hybrid() const noexcept { return m_type_flags[or_2_generic_pos]; }
     inline constexpr bool is_phyrexian() const noexcept { return m_type_flags[or_2_life_pos]; }
 
+    inline bool is_equal(const mana& other) const noexcept { return m_type_flags == other.m_type_flags; }
+
   private:
     mana(value_type flags, const std::string& representation) noexcept : m_type_flags{flags}, m_str_representation(representation) {}
     inline mge::size_t color_count() const noexcept { return (m_type_flags & color_mask).count(); }
@@ -104,5 +106,14 @@ namespace mtg
   };
 
 } // namespace mtg
+
+inline bool operator==(const mtg::mana& lhs, const mtg::mana& rhs) noexcept
+{
+  return lhs.is_equal(rhs);
+}
+inline bool operator!=(const mtg::mana& lhs, const mtg::mana& rhs) noexcept
+{
+  return !(lhs == rhs);
+}
 
 #endif /*MALEFICA_MTG_MANAPRIMITIVES_HXX*/
