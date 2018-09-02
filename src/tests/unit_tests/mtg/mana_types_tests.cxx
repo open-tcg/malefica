@@ -28,7 +28,23 @@ TEST_CASE("testing mana primitives", "[mana][mtg]")
     }
   }
 
-  SECTION("test hybrid mana_types")
+  SECTION("test monocolor hybrid mana_types")
+  {
+    {
+      auto mana = mtg::mana_types::green_or_2;
+      REQUIRE(mana.has_green());
+      REQUIRE(mana.is_hybrid());
+      REQUIRE(mana.is_monocolored());
+      REQUIRE(mana.has_generic());
+      REQUIRE(mana.is_monocolored_hybrid());
+
+      REQUIRE_FALSE(mana.is_black());
+      REQUIRE_FALSE(mana.is_red());
+      REQUIRE_FALSE(mana.is_phyrexian());
+    }
+  }
+
+  SECTION("test multicolor hybrid mana_types")
   {
     {
       auto mana = mtg::mana_types::black_red;

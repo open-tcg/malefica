@@ -12,7 +12,7 @@ namespace mtg
   {
     using flag_type = std::bitset<16>;
 
-    static constexpr mge::uint8_t genric_pos = 0;
+    static constexpr mge::uint8_t generic_pos = 0;
     static constexpr mge::uint8_t white_pos = 1;
     static constexpr mge::uint8_t blue_pos = 2;
     static constexpr mge::uint8_t black_pos = 3;
@@ -30,7 +30,7 @@ namespace mtg
   public:
     using value_type = mge::uint16_t;
 
-    inline constexpr bool has_generic() const noexcept { return m_type_flags[genric_pos]; }
+    inline constexpr bool has_generic() const noexcept { return m_type_flags[generic_pos]; }
     inline constexpr bool has_white() const noexcept { return m_type_flags[white_pos]; }
     inline constexpr bool has_blue() const noexcept { return m_type_flags[blue_pos]; }
     inline constexpr bool has_black() const noexcept { return m_type_flags[black_pos]; }
@@ -85,6 +85,12 @@ namespace mtg
     static const mana red_green;
     static const mana green_white;
     static const mana green_blue;
+
+    static const mana white_or_2;
+    static const mana blue_or_2;
+    static const mana black_or_2;
+    static const mana red_or_2;
+    static const mana green_or_2;
   };
 
 } // namespace mtg

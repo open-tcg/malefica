@@ -23,4 +23,10 @@ namespace mtg
   const mana mana_types::green_white(1 << mana::green_pos | 1 << mana::white_pos, "G/W");
   const mana mana_types::green_blue(1 << mana::green_pos | 1 << mana::blue_pos, "G/B");
 
+  const mana mana_types::white_or_2(1 << mana::generic_pos | 1 << mana::white_pos | 1 << mana::or_2_generic_pos, "2/W");
+  const mana mana_types::blue_or_2(1 << mana::generic_pos | 1 << mana::blue_pos | 1 << mana::or_2_generic_pos, "2/U");
+  const mana mana_types::black_or_2(1 << mana::generic_pos | 1 << mana::black_pos | 1 << mana::or_2_generic_pos, "2/B");
+  const mana mana_types::red_or_2(1 << mana::generic_pos | 1 << mana::red_pos | 1 << mana::or_2_generic_pos, "2/R");
+  const mana mana_types::green_or_2(1 << mana::generic_pos | 1 << mana::green_pos | 1 << mana::or_2_generic_pos, "2/G");
+
 } // namespace mtg
