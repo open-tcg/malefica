@@ -29,4 +29,10 @@ namespace mtg
   const mana mana_types::red_or_2(1 << mana::generic_pos | 1 << mana::red_pos | 1 << mana::or_2_generic_pos, "2/R");
   const mana mana_types::green_or_2(1 << mana::generic_pos | 1 << mana::green_pos | 1 << mana::or_2_generic_pos, "2/G");
 
+  const mana mana_types::phyrexian_white(1 << mana::white_pos | 1 << mana::or_2_life_pos, "P/W");
+  const mana mana_types::phyrexian_blue(1 << mana::blue_pos | 1 << mana::or_2_life_pos, "P/U");
+  const mana mana_types::phyrexian_black(1 << mana::black_pos | 1 << mana::or_2_life_pos, "P/B");
+  const mana mana_types::phyrexian_red(1 << mana::red_pos | 1 << mana::or_2_life_pos, "P/R");
+  const mana mana_types::phyrexian_green(1 << mana::green_pos | 1 << mana::or_2_life_pos, "P/G");
+
 } // namespace mtg

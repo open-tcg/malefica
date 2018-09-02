@@ -69,4 +69,16 @@ TEST_CASE("testing mana primitives", "[mana][mtg]")
       REQUIRE_FALSE(mana.is_red());
     }
   }
+
+  SECTION("test phyrexian mana_types")
+  {
+    {
+      auto mana = mtg::mana_types::phyrexian_black;
+      REQUIRE(mana.has_black());
+      REQUIRE(mana.is_phyrexian());
+      REQUIRE(mana.is_monocolored());
+
+      REQUIRE_FALSE(mana.is_hybrid());
+    }
+  }
 }

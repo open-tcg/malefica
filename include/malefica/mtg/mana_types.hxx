@@ -91,6 +91,12 @@ namespace mtg
     static const mana black_or_2;
     static const mana red_or_2;
     static const mana green_or_2;
+
+    static const mana phyrexian_white;
+    static const mana phyrexian_blue;
+    static const mana phyrexian_black;
+    static const mana phyrexian_red;
+    static const mana phyrexian_green;
   };
 
 } // namespace mtg
