@@ -111,6 +111,8 @@ script:
     cmake --build ./build --target unittest_coverage -- -j3
   else
     cmake --build ./build --target all -- -j3
+    cd  build
+    ctest -v
   fi
 after_success:
 - |-
