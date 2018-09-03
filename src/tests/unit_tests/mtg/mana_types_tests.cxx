@@ -25,6 +25,7 @@ TEST_CASE("testing mana primitives", "[mana][mtg]")
       REQUIRE_FALSE(mana.has_green());
       REQUIRE_FALSE(mana.is_snow());
       REQUIRE_FALSE(mana.is_x());
+      REQUIRE_FALSE(mana.is_generic());
     }
   }
 
@@ -88,6 +89,7 @@ TEST_CASE("testing mana primitives", "[mana][mtg]")
       auto mana = mtg::mana_types::generic;
       REQUIRE(mana.is_colorless());
       REQUIRE(mana.has_generic());
+      REQUIRE(mana.is_generic());
     }
   }
 
