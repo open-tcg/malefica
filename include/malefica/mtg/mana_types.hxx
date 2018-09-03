@@ -1,5 +1,5 @@
-#ifndef MALEFICA_MTG_MANAPRIMITIVES_HXX
-#define MALEFICA_MTG_MANAPRIMITIVES_HXX
+#ifndef MALEFICA_MTG_MANATYPES_HXX
+#define MALEFICA_MTG_MANATYPES_HXX
 
 #include <bitset>
 #include <string>
@@ -38,6 +38,8 @@ namespace mtg
     inline constexpr bool has_green() const noexcept { return m_type_flags[green_pos]; }
     inline constexpr bool has_waste() const noexcept { return m_type_flags[waste_pos]; }
 
+    inline bool is_generic() const noexcept { return has_generic() && is_colorless(); }
+
     inline bool is_white() const noexcept { return !is_hybrid() && has_white(); }
     inline bool is_blue() const noexcept { return !is_hybrid() && has_blue(); }
     inline bool is_black() const noexcept { return !is_hybrid() && has_black(); }
@@ -57,6 +59,16 @@ namespace mtg
     inline constexpr bool is_phyrexian() const noexcept { return m_type_flags[or_2_life_pos]; }
 
     inline bool is_equal(const mana& other) const noexcept { return m_type_flags == other.m_type_flags; }
+    inline mge::size_t hash() const noexcept
+    {
+      std::hash<flag_type> hash_fn;
+      return hash_fn(m_type_flags);
+    }
+
+    inline bool operator==(const mana& other) const noexcept { return is_equal(other); }
+    inline bool operator!=(const mana& other) const noexcept { return !(this->operator==(other)); }
+
+    inline std::string str() const noexcept { return m_str_representation; }
 
   private:
     mana(value_type flags, const std::string& representation) noexcept : m_type_flags{flags}, m_str_representation(representation) {}
@@ -66,6 +78,11 @@ namespace mtg
 
     const flag_type m_type_flags;
     const std::string m_str_representation;
+  };
+
+  struct mana_hash
+  {
+    mge::size_t operator()(const mtg::mana& m) const noexcept { return m.hash(); }
   };
 
   struct mana_types
@@ -103,17 +120,10 @@ namespace mtg
     static const mana generic;
     static const mana snow;
     static const mana variable;
+
+    static mana from_string(const std::string& mana_str) noexcept;
   };
 
 } // namespace mtg
 
-inline bool operator==(const mtg::mana& lhs, const mtg::mana& rhs) noexcept
-{
-  return lhs.is_equal(rhs);
-}
-inline bool operator!=(const mtg::mana& lhs, const mtg::mana& rhs) noexcept
-{
-  return !(lhs == rhs);
-}
-
-#endif /*MALEFICA_MTG_MANAPRIMITIVES_HXX*/
+#endif /*MALEFICA_MTG_MANATYPES_HXX*/

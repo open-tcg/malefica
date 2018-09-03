@@ -19,7 +19,8 @@ set(MALEFICA_TEST_MGE_SRC   ${MALEFICA_TEST_LOG_SRC}
                             ${MALEFICA_TEST_MATH_SRC}
 )
 
-set(MALEFICA_TEST_MTG_SRC   "${CMAKE_CURRENT_SOURCE_DIR}/mtg/mana_types_tests.cxx"
+set(MALEFICA_TEST_MTG_SRC   "${CMAKE_CURRENT_SOURCE_DIR}/mtg/mana_cost_tests.cxx"
+                            "${CMAKE_CURRENT_SOURCE_DIR}/mtg/mana_types_tests.cxx"
 )
 
 add_executable (${PROJECT_TEST_NAME}  ${CATCH_MAIN_FILE}

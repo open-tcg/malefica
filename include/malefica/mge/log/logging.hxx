@@ -1,5 +1,5 @@
-#ifndef MALEFICA_MGE_DEBUG_LOGGING_HXX
-#define MALEFICA_MGE_DEBUG_LOGGING_HXX
+#ifndef MALEFICA_MGE_LOG_LOGGING_HXX
+#define MALEFICA_MGE_LOG_LOGGING_HXX
 
 #include <spdlog/spdlog.h>
 
@@ -133,15 +133,15 @@ namespace mge
 
 } // namespace mge
 
-#ifndef MALEFICA_MGE_LOG
-#define MALEFICA_MGE_LOG() ::mge::log::static_logger::out() << ::mge::log::detail::create_function_prefix(__FILE__, __FUNCTION__, __LINE__)
-#endif // MALEFICA_MGE_LOG
+#ifndef MGE_LOG
+#define MGE_LOG() ::mge::log::static_logger::out() << ::mge::log::detail::create_function_prefix(__FILE__, __FUNCTION__, __LINE__)
+#endif // MGE_LOG
 
-#ifndef MALEFICA_MGE_PRINTF
-#define MALEFICA_MGE_PRINTF(...) ::mge::log::static_logger::log(::mge::log::detail::create_message(__FILE__, __FUNCTION__, __LINE__, __VA_ARGS__));
-#endif // MALEFICA_MGE_PRINTF
+#ifndef MGE_PRINTF
+#define MGE_PRINTF(...) ::mge::log::static_logger::log(::mge::log::detail::create_message(__FILE__, __FUNCTION__, __LINE__, __VA_ARGS__));
+#endif // MGE_PRINTF
 
-// MALEFICA_MGE_LOG() << wge::log::category::test << wge::log::level::fatal << "test message";
-// MALEFICA_MGE_PRINTF(wge::log::level::info, "this %s a multi parameter %s with %i parameters", "is", "string", 3);
+// MGE_LOG() << wge::log::category::test << wge::log::level::fatal << "test message";
+// MGE_PRINTF(wge::log::level::info, "this %s a multi parameter %s with %i parameters", "is", "string", 3);
 
-#endif /* MALEFICA_MGE_DEBUG_LOGGING_HXX */
+#endif /* MALEFICA_MGE_LOG_LOGGING_HXX */

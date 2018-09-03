@@ -36,6 +36,8 @@ find_package(Threads REQUIRED)
 include_directories ("${THIRD_PARTY_INCLUDE_DIRS}")
 include_directories ("${CMAKE_SOURCE_DIR}/include")
 
+set(MALEFICA_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
+
 enable_testing()
 add_subdirectory(src)
 
