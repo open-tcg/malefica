@@ -14,7 +14,7 @@ matrix:
         - g++-7
         - cmake
         - libsdl2-dev
-    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7 && GCOV=gcov-7" BUILD_TARGET=Coverage
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7" GCOV=gcov-7 BUILD_TARGET=Coverage
   - os: linux
     compiler: clang
     addons:
