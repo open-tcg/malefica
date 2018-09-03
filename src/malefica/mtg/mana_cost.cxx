@@ -8,104 +8,11 @@
 
 namespace mtg
 {
-  bool mana_cost::has_white() const noexcept
+  bool mana_cost::check_for_each(const std::function<bool(const mana&)>& func) const noexcept
   {
     for (auto& mana : m_container)
     {
-      if (mana.first.has_white())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  bool mana_cost::has_blue() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.has_blue())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  bool mana_cost::has_black() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.has_black())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  bool mana_cost::has_red() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.has_red())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool mana_cost::has_green() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.has_green())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool mana_cost::has_waste() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.has_waste())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool mana_cost::has_snow() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.is_snow())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool mana_cost::has_x() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.is_x())
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool mana_cost::has_phyrexian() const noexcept
-  {
-    for (auto& mana : m_container)
-    {
-      if (mana.first.is_phyrexian())
+      if (func(mana.first))
       {
         return true;
       }
@@ -118,17 +25,7 @@ namespace mtg
     amount_type costs = 0;
     for (auto& mana : m_container)
     {
-      if (!mana.first.is_x())
-      {
-        if (mana.first.is_monocolored_hybrid())
-        {
-          costs += (mana.second * 2);
-        }
-        else
-        {
-          costs += mana.second;
-        }
-      }
+      costs += (mana.second * mana.first.cost_multiplicator());
     }
     return costs;
   }

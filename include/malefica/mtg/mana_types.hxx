@@ -58,6 +58,13 @@ namespace mtg
     inline constexpr bool is_monocolored_hybrid() const noexcept { return m_type_flags[or_2_generic_pos]; }
     inline constexpr bool is_phyrexian() const noexcept { return m_type_flags[or_2_life_pos]; }
 
+    inline constexpr mge::size_t cost_multiplicator() const noexcept
+    {
+      if (is_x()) return 0;
+      if (is_monocolored_hybrid()) return 2;
+      return 1;
+    }
+
     inline bool is_equal(const mana& other) const noexcept { return m_type_flags == other.m_type_flags; }
     inline mge::size_t hash() const noexcept
     {

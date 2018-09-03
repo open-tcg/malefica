@@ -44,39 +44,43 @@ namespace mtg
   {
     if (mana_str.size() == 1)
     {
-      if (mana_str == white.str()) return white;
-      if (mana_str == blue.str()) return blue;
-      if (mana_str == black.str()) return black;
-      if (mana_str == red.str()) return red;
-      if (mana_str == green.str()) return green;
-      if (mana_str == waste.str()) return waste;
-      if (mana_str == snow.str()) return snow;
-      if (mana_str == variable.str()) return variable;
+      static const mana simple_mana_array[] = {white, blue, black, red, green, waste, snow, variable};
+      for (auto& current_mana : simple_mana_array)
+      {
+        if (mana_str == current_mana.str())
+        {
+          return current_mana;
+        }
+      }
     }
     else if (mana_str.size() == 3)
     {
-      if (mana_str == white_blue.str()) return white_blue;
-      if (mana_str == white_black.str()) return white_black;
-      if (mana_str == blue_black.str()) return blue_black;
-      if (mana_str == blue_red.str()) return blue_red;
-      if (mana_str == black_red.str()) return black_red;
-      if (mana_str == black_green.str()) return black_green;
-      if (mana_str == red_white.str()) return red_white;
-      if (mana_str == red_green.str()) return red_green;
-      if (mana_str == green_white.str()) return green_white;
-      if (mana_str == green_blue.str()) return green_blue;
+      static const mana hybrid_mana[] = {white_blue, white_black, blue_black, blue_red, black_red, black_green, red_white, red_green, green_white, green_blue};
+      for (auto& current_mana : hybrid_mana)
+      {
+        if (mana_str == current_mana.str())
+        {
+          return current_mana;
+        }
+      }
 
-      if (mana_str == white_or_2.str()) return white_or_2;
-      if (mana_str == blue_or_2.str()) return blue_or_2;
-      if (mana_str == black_or_2.str()) return black_or_2;
-      if (mana_str == red_or_2.str()) return red_or_2;
-      if (mana_str == green_or_2.str()) return green_or_2;
+      static const mana mono_hybrid_mana[] = {white_or_2, blue_or_2, black_or_2, red_or_2, green_or_2};
+      for (auto& current_mana : mono_hybrid_mana)
+      {
+        if (mana_str == current_mana.str())
+        {
+          return current_mana;
+        }
+      }
 
-      if (mana_str == phyrexian_white.str()) return phyrexian_white;
-      if (mana_str == phyrexian_blue.str()) return phyrexian_blue;
-      if (mana_str == phyrexian_black.str()) return phyrexian_black;
-      if (mana_str == phyrexian_red.str()) return phyrexian_red;
-      if (mana_str == phyrexian_green.str()) return phyrexian_green;
+      static const mana phyrexian_mana[] = {phyrexian_white, phyrexian_blue, phyrexian_black, phyrexian_red, phyrexian_green};
+      for (auto& current_mana : phyrexian_mana)
+      {
+        if (mana_str == current_mana.str())
+        {
+          return current_mana;
+        }
+      }
     }
 
     return generic;
