@@ -29,6 +29,8 @@ namespace mtg
     bool has_x() const noexcept;
     bool has_snow() const noexcept;
 
+    bool has_phyrexian() const noexcept;
+
     inline bool no_cost() const noexcept { return m_container.empty(); }
 
     amount_type converted() const noexcept;

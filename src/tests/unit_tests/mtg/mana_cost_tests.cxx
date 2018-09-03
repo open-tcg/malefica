@@ -101,6 +101,7 @@ TEST_CASE("testing mana cost", "[mana][mtg]")
     {
       auto cost = mtg::mana_cost::from_string("{2/W}{2/W}{2/W}");
       REQUIRE(cost.converted() == 6);
+      REQUIRE_FALSE(cost.has_phyrexian());
     }
   }
 
@@ -109,11 +110,13 @@ TEST_CASE("testing mana cost", "[mana][mtg]")
     {
       auto cost = mtg::mana_cost::from_string("{P/U}");
       REQUIRE(cost.has_blue());
+      REQUIRE(cost.has_phyrexian());
     }
 
     {
       auto cost = mtg::mana_cost::from_string("{P/G}");
       REQUIRE(cost.has_green());
+      REQUIRE(cost.has_phyrexian());
     }
   }
 

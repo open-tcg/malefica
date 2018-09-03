@@ -101,6 +101,18 @@ namespace mtg
     return false;
   }
 
+  bool mana_cost::has_phyrexian() const noexcept
+  {
+    for (auto& mana : m_container)
+    {
+      if (mana.first.is_phyrexian())
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+
   mana_cost::amount_type mana_cost::converted() const noexcept
   {
     amount_type costs = 0;
