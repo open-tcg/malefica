@@ -75,10 +75,13 @@ TEST_CASE("testing mana cost", "[mana][mtg]")
       auto cost = mtg::mana_cost::from_string("{R/W}");
       REQUIRE(cost.has_red());
       REQUIRE(cost.has_white());
+      REQUIRE(cost.has_hybrid());
+      REQUIRE(cost.has_multicolored_hybrid());
       REQUIRE(cost.converted() == 1);
 
       REQUIRE_FALSE(cost.has_green());
       REQUIRE_FALSE(cost.has_black());
+      REQUIRE_FALSE(cost.has_monocolored_hybrid());
     }
 
     {
@@ -96,6 +99,10 @@ TEST_CASE("testing mana cost", "[mana][mtg]")
       auto cost = mtg::mana_cost::from_string("{2/G}");
       REQUIRE(cost.has_green());
       REQUIRE(cost.converted() == 2);
+      REQUIRE(cost.has_hybrid());
+      REQUIRE(cost.has_monocolored_hybrid());
+
+      REQUIRE_FALSE(cost.has_multicolored_hybrid());
     }
 
     {

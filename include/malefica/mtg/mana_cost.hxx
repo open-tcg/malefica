@@ -26,45 +26,63 @@ namespace mtg
       return check_for_each(func);
     }
 
-    bool has_blue() const noexcept
+    inline bool has_blue() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.has_blue(); };
       return check_for_each(func);
     }
 
-    bool has_black() const noexcept
+    inline bool has_black() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.has_black(); };
       return check_for_each(func);
     }
 
-    bool has_red() const noexcept
+    inline bool has_red() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.has_red(); };
       return check_for_each(func);
     }
 
-    bool has_green() const noexcept
+    inline bool has_green() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.has_green(); };
       return check_for_each(func);
     }
 
-    bool has_waste() const noexcept
+    inline bool has_waste() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.has_waste(); };
       return check_for_each(func);
     }
 
-    bool has_x() const noexcept
+    inline bool has_x() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.is_x(); };
       return check_for_each(func);
     }
 
-    bool has_snow() const noexcept
+    inline bool has_snow() const noexcept
     {
       static const auto func = [](const mana& m) -> int { return m.is_snow(); };
+      return check_for_each(func);
+    }
+
+    inline bool has_hybrid() const noexcept
+    {
+      static const auto func = [](const mana& m) -> int { return m.is_hybrid(); };
+      return check_for_each(func);
+    }
+
+    inline bool has_multicolored_hybrid() const noexcept
+    {
+      static const auto func = [](const mana& m) -> int { return m.is_multicolored_hybrid(); };
+      return check_for_each(func);
+    }
+
+    inline bool has_monocolored_hybrid() const noexcept
+    {
+      static const auto func = [](const mana& m) -> int { return m.is_monocolored_hybrid(); };
       return check_for_each(func);
     }
 
